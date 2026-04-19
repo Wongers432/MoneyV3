@@ -98,7 +98,11 @@ function init() {
         streakCount: document.getElementById('streak-count'),
         currentDate: document.getElementById('current-date'),
         views: document.querySelectorAll('.view'),
-        tabs: document.querySelectorAll('.tab-item')
+        tabs: document.querySelectorAll('.tab-item'),
+        
+        // New Financial Elements
+        monthlyNetGain: document.getElementById('monthly-net-gain'),
+        effectiveBalance: document.getElementById('effective-balance')
     };
 
     updateDate();
@@ -331,6 +335,25 @@ function renderDashboard() {
         els.ringBar.style.stroke = progress > 0.85 ? 'var(--negative-color)' : 'var(--accent-color)';
         updateInsight(progress, totalSpent, activeBudget);
     }
+
+    // New Financial Calculations
+    const totalInflow = state.inflows.reduce((sum, f) => sum + f.amount, 0);
+    const totalOutflow = state.outflows.reduce((sum, f) => sum + f.amount, 0);
+    const netGain = totalInflow - totalOutflow;
+    
+    if (els.monthlyNetGain) {
+        els.monthlyNetGain.textContent = `£${netGain.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+        els.monthlyNetGain.className = `outlook-value ${netGain >= 0 ? 'positive' : 'negative'}`;
+    }
+    
+    if (els.effectiveBalance) {
+        // Effective Balance = Current Balance - committed outflows
+        // This gives a "Safe to spend" baseline
+        const effective = state.totalBalance - totalOutflow;
+        els.effectiveBalance.textContent = `£${effective.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+        els.effectiveBalance.className = `outlook-value ${effective >= 0 ? '' : 'negative'}`;
+    }
+
     renderTransactions();
 }
 
