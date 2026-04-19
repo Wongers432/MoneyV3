@@ -18,6 +18,10 @@
     --cat-entertainment: #AF52DE;
     --cat-income: #30D158;
     --cat-other: #8E8E93;
+    
+    --tab-bar-bg: rgba(15, 16, 20, 0.85);
+    --border-color: rgba(255, 255, 255, 0.05);
+    --input-bg: rgba(255, 255, 255, 0.05);
 }
 
 [data-theme="light"] {
@@ -26,6 +30,22 @@
     --text-primary: #000000;
     --text-secondary: #8E8E93;
     --accent-color: #0057FF;
+    --tab-bar-bg: rgba(255, 255, 255, 0.85);
+    --border-color: rgba(0, 0, 0, 0.05);
+    --input-bg: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="kyla"] {
+    --bg-color: #FFF5F7;
+    --surface-color: #FFFFFF;
+    --text-primary: #1F1F1F;
+    --text-secondary: #8E8E93;
+    --accent-color: #FF2D55;
+    --positive-color: #2ECC71;
+    --negative-color: #FF453A;
+    --tab-bar-bg: rgba(255, 245, 247, 0.85);
+    --border-color: rgba(255, 45, 85, 0.1);
+    --input-bg: rgba(255, 45, 85, 0.05);
 }
 
 * {
@@ -420,7 +440,7 @@ h3 {
     display: flex;
     align-items: center;
     gap: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-color);
     cursor: pointer;
     transition: background-color 0.2s;
 }
@@ -481,11 +501,11 @@ h3 {
     justify-content: space-around;
     align-items: center;
     padding-bottom: var(--safe-area-bottom);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--border-color);
     z-index: 100;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    background-color: rgba(15, 16, 20, 0.85);
+    background-color: var(--tab-bar-bg);
 }
 
 .tab-item {
@@ -530,7 +550,7 @@ h3 {
     display: flex;
     align-items: center;
     gap: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-color);
     cursor: pointer;
 }
 
@@ -566,7 +586,7 @@ h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .settings-row:last-child {
@@ -667,7 +687,7 @@ h3 {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--input-bg);
     transition: .4s;
 }
 

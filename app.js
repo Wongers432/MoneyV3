@@ -118,11 +118,23 @@ function updateDate() {
 }
 
 function applyTheme(theme) {
+    let activeTheme = theme;
     if (theme === 'system') {
         const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-    } else {
-        document.documentElement.setAttribute('data-theme', theme);
+        activeTheme = isDark ? 'dark' : 'light';
+    }
+    
+    document.documentElement.setAttribute('data-theme', activeTheme);
+    
+    // Update theme-color meta tag for mobile status bar
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) {
+        const colors = {
+            'dark': '#0F1014',
+            'light': '#F2F2F7',
+            'kyla': '#FFF5F7'
+        };
+        metaThemeColor.setAttribute('content', colors[activeTheme] || '#0F1014');
     }
 }
 
