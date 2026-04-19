@@ -190,34 +190,23 @@ h1 {
 
 /* Outlook Card */
 .outlook-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 24px;
+    padding: 20px 24px;
     margin-bottom: 24px;
+    text-align: center;
 }
 
-.outlook-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+.outlook-item.centered {
+    align-items: center;
 }
 
-.outlook-divider {
-    width: 1px;
-    height: 30px;
-    background-color: var(--border-color);
-    margin: 0 20px;
-}
-
-.outlook-value {
-    font-size: 20px;
+.outlook-value-large {
+    font-size: 28px;
     font-weight: 700;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
+    color: var(--accent-color);
 }
 
-.outlook-value.positive { color: var(--positive-color); }
-.outlook-value.negative { color: var(--negative-color); }
+.outlook-value-large.negative { color: var(--negative-color); }
 
 .label {
     font-size: 14px;
