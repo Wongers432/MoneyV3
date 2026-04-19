@@ -36,16 +36,16 @@
 }
 
 [data-theme="kyla"] {
-    --bg-color: #f66ef6;
-    --surface-color: #FFFFFF;
-    --text-primary: #1F1F1F;
-    --text-secondary: #8E8E93;
-    --accent-color: #c9009d;
-    --positive-color: #2ECC71;
-    --negative-color: #ff0084;
-    --tab-bar-bg: rgba(255, 186, 242, 0.85);
-    --border-color: rgba(255, 45, 85, 0.1);
-    --input-bg: rgba(255, 45, 85, 0.05);
+    --bg-color: #26011B;
+    --surface-color: #3D022B;
+    --text-primary: #FFFFFF;
+    --text-secondary: #FFB6E0;
+    --accent-color: #FF2D95;
+    --positive-color: #32D74B;
+    --negative-color: #FF453A;
+    --tab-bar-bg: rgba(38, 1, 27, 0.85);
+    --border-color: rgba(255, 45, 149, 0.2);
+    --input-bg: rgba(255, 45, 149, 0.1);
 }
 
 * {
