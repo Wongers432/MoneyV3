@@ -336,13 +336,14 @@ function renderDashboard() {
     }
 
     // New Financial Calculations
+    const totalInflow = state.inflows.reduce((sum, f) => sum + f.amount, 0);
     const totalOutflow = state.outflows.reduce((sum, f) => sum + f.amount, 0);
+    const netGain = totalInflow - totalOutflow;
     
     if (els.effectiveBalance) {
-        // Effective Balance = Current Balance - committed outflows
-        const effective = state.totalBalance - totalOutflow;
-        els.effectiveBalance.textContent = `£${effective.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
-        els.effectiveBalance.className = `outlook-value-large ${effective >= 0 ? '' : 'negative'}`;
+        els.effectiveBalance.textContent = `£${netGain.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+        els.effectiveBalance.className = `outlook-value-large ${netGain >= 0 ? 'positive' : ''}`;
+        if (netGain < 0) els.effectiveBalance.classList.add('negative');
     }
 
     renderTransactions();
