@@ -336,6 +336,25 @@ function renderDashboard() {
     }
 
     // New Financial Calculations
+    const now = new Date();
+    now.setHours(23, 59, 59, 999); // End of today
+
+    // Calculate Realized Balance (Manual Balance + Past Inflows - Past Outflows)
+    const realizedInflows = state.inflows
+        .filter(f => new Date(f.date) <= now)
+        .reduce((sum, f) => sum + f.amount, 0);
+    
+    const realizedOutflows = state.outflows
+        .filter(f => new Date(f.date) <= now)
+        .reduce((sum, f) => sum + f.amount, 0);
+
+    const currentDisplayBalance = state.totalBalance + realizedInflows - realizedOutflows;
+    
+    if (els.totalBalance) {
+        els.totalBalance.textContent = `£${currentDisplayBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+
+    // Month's Effective Balance (Monthly Surplus)
     const totalInflow = state.inflows.reduce((sum, f) => sum + f.amount, 0);
     const totalOutflow = state.outflows.reduce((sum, f) => sum + f.amount, 0);
     const netGain = totalInflow - totalOutflow;
