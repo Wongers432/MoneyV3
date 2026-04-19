@@ -132,8 +132,7 @@ function applyTheme(theme) {
         const colors = {
             'dark': '#0F1014',
             'light': '#F2F2F7',
-            'kyla': '#26011B',
-            'contrast': '#000000'
+            'kyla': '#26011B'
         };
         metaThemeColor.setAttribute('content', colors[activeTheme] || '#0F1014');
     }
